@@ -4,13 +4,14 @@ const EventSchema = new Schema({
     eventType : {
         type : String,
         required : [true, "You must pick a type" ],
-        default : ["Benefit", "Birthday", "Watch Party", "Fund Raiser", "Tournament" ],
+        enum : ["Benefit", "Birthday", "Watch Party", "Fund Raiser", "Tournament" ],
+        default : "Benefit",
     },    
     eventName : {
         type : String,
         required : [true, "Event must have a name"],
         minlength : [5, "eventName must be at least 5 characters long."],
-        maxlength : [50, "Event must be no longer than 50 characters."]
+        maxlength : [50, "Event must be no longer than 50 characters."],
     },
     eventDate : {
         type : String,
