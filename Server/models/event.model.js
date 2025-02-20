@@ -12,9 +12,13 @@ const EventSchema = new Schema({
         minlength : [5, "eventName must be at least 5 characters long."],
         maxlength : [50, "Event must be no longer than 50 characters."]
     },
-    eventDateTime : {
+    eventDate : {
         type : Date,
         required : [true, "Your event must have a date and time"],
+    },
+    eventTime : {
+        type : String,
+        default : "12:00 pm",
     },
     numberOfPeople : {
         type : Number,
@@ -24,7 +28,6 @@ const EventSchema = new Schema({
     },
     image : {
         type : String,
-
     },
     description : {
         type : String,
