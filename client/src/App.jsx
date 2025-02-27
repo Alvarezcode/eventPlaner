@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
+import { EventViews } from './views/EventViews'
 
 function App() {
   
@@ -8,7 +9,7 @@ function App() {
     <>
     <h1>Hello Human</h1>
     <Routes>
-      <Route path="/" element />
+      <Route path="/" element={<EventViews />} />
     </Routes>
     </>
   )
