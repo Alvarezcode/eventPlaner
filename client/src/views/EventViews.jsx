@@ -1,10 +1,19 @@
 import { useEffect, useState } from "react"
-import { getAllEvents } from "../services/EventService"
+import { deleteEventById, getAllEvents } from "../services/EventService"
 import { DisplayEvents } from "../components/DisplayEvents"
 
 
 export const EventViews = ({setHeaderTxt})=> { //bring in header text through props
     const [eventList, setEventList] = useState([])
+
+    const deleteEvent = (id) =>{
+        deleteEventById(id)
+        .then(()=>{
+            setEventList(prev => prev.filter(event => event._id !== id))
+        })
+        .catch(error =>console.error("DisplayEvents.jsx ERROR:", error))
+    }
+
     useEffect(()=>{
         getAllEvents()
             .then(RES =>{
@@ -15,7 +24,6 @@ export const EventViews = ({setHeaderTxt})=> { //bring in header text through pr
     },[setHeaderTxt])
 
     return(<>
-        <DisplayEvents eventList={eventList} />
-    
+        <DisplayEvents eventList={eventList} deleteEvent={deleteEvent}  />
     </>)
 }

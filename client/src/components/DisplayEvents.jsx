@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
 
-export const DisplayEvents = ({eventList})=>{ //might add a delete button and eventDetails button
+export const DisplayEvents = ({eventList, deleteEvent})=>{ //might add a delete button and eventDetails button
 
     return(<>
     {
@@ -13,7 +13,8 @@ export const DisplayEvents = ({eventList})=>{ //might add a delete button and ev
                 Event Name: {eventName}
                 Event Date: {eventDate}
                 Event Time: {eventTime}
-                How many People: {numberOfPeople}
+                How many People are Coming: {numberOfPeople}
+                <button className="btn btn-danger" onClick={()=> deleteEvent(_id)} >Cancel Event</button>
             </div>
         ))
     }

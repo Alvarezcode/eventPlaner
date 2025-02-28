@@ -14,11 +14,11 @@ export const EventDetails = ({setHeaderTxt})=>{ //set header text from props
                 setHeaderTxt(RES.eventName)
             })
             .catch(error => console.error(`EventDetails.jsx ERROR: ${error} `))
-    },[id, setHeaderTxt]) //setHeaderTxt needs to be rendered 
+    },[id, setHeaderTxt])
 
     return(<>
         <h2> {eventData.eventType} </h2>
-        <p>Event Name: {eventData.eventName}</p>
+        <p>Your Invited to: {eventData.eventName}</p>
         <p>When: {eventData.eventDate} at {eventData.eventTime} </p>
         <p>Whats Happening: {eventData.description} </p>
         {/* <Link className="btn btn-warning" to={`/${id}/update`} >Update Event</Link> */}
