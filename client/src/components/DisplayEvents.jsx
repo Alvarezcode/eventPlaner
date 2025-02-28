@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
 
-export const DisplayEvents = ({eventList})=>{ //might add a delete button
+export const DisplayEvents = ({eventList})=>{ //might add a delete button and eventDetails button
 
     return(<>
     {
@@ -16,8 +16,6 @@ export const DisplayEvents = ({eventList})=>{ //might add a delete button
                 How many People: {numberOfPeople}
             </div>
         ))
-
-
     }
     
     </>)
