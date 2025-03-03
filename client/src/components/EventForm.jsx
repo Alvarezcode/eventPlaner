@@ -19,11 +19,19 @@ export const EventForm = ({setHeaderTxt})=>{
     const {id} = useParams()
     const navigate = useNavigate()
 
+    const formatDate = (dateString)=>{
+        const options = {year: 'numeric', month: 'long', day: 'numeric'};
+        return new Date(dateString).toLocaleDateString('en-US', options)
+    };
+
     useEffect(()=>{
         if(id){
             getEventById(id)
                 .then(RES =>{
-                    setFormData(RES)
+                    setFormData({
+                        ...RES,
+                        eventDate: formatDate(RES.eventDate)
+                    })
                     setHeaderTxt(`Update Event: ${RES.eventName}`)
                 })
                 .catch(error => console.error("EventForm.jsx ERROR:", error))
@@ -34,9 +42,10 @@ export const EventForm = ({setHeaderTxt})=>{
         }
     },[id, setHeaderTxt])
 
+
     const updateFormData = e =>{
         const {name, value} = e.target;
-        setFormData(prev => ({...prev, [name]:value }))
+        setFormData(prev => ({...prev, [name]: name === "eventDate" ? formatDate(value) : value }))
     }
 
     const handleSubmit = e =>{
