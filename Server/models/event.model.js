@@ -5,8 +5,7 @@ const EventSchema = new Schema({
         type : String,
         required : [true, "You must pick a type" ],
         enum : ["Benefit", "Birthday", "Watch Party", "Fund Raiser", "Tournament" ],
-        default : "Benefit",
-    },    
+    },
     eventName : {
         type : String,
         required : [true, "Event must have a name"],

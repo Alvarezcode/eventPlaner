@@ -3,7 +3,7 @@ import { deleteEventById, getAllEvents } from "../services/EventService"
 import { DisplayEvents } from "../components/DisplayEvents"
 
 
-export const EventViews = ({setHeaderTxt})=> { //bring in header text through props
+export const EventViews = ({setHeaderTxt})=> {
     const [eventList, setEventList] = useState([])
 
     const deleteEvent = (id) =>{

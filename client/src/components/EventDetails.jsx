@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import { getEventById } from "../services/EventService"
 import { Link } from "react-router-dom"
 
-export const EventDetails = ({setHeaderTxt})=>{ //set header text from props
+export const EventDetails = ({setHeaderTxt})=>{
     const {id} = useParams()
     const [eventData, setEventData] = useState({})
 
@@ -18,9 +18,10 @@ export const EventDetails = ({setHeaderTxt})=>{ //set header text from props
 
     return(<>
         <h2> {eventData.eventType} </h2>
+        <img src={eventData.image} alt={`${eventData.eventName}`} />
         <p>Your Invited to: {eventData.eventName}</p>
         <p>When: {eventData.eventDate} at {eventData.eventTime} </p>
         <p>Whats Happening: {eventData.description} </p>
-        {/* <Link className="btn btn-warning" to={`/${id}/update`} >Update Event</Link> */}
+        <Link className="btn btn-warning" to={`/${id}/update`} >Update Event</Link>
     </>)
 }

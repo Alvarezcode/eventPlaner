@@ -4,6 +4,7 @@ import { EventViews } from './views/EventViews'
 import { EventDetails } from './components/EventDetails'
 import { useState } from 'react'
 import { Header } from './components/Header'
+import { EventForm } from './components/EventForm'
 
 function App() {
   const [headerTxt, setHeaderTxt] = useState("Events @Crusiers")
@@ -11,8 +12,10 @@ function App() {
   return (<>
           <Header headerTxt={headerTxt} />
           <Routes>
-            <Route path="/" element={<EventViews headerTxt={setHeaderTxt} />}/>
-            <Route path="/:id" element={<EventDetails headerTxt={setHeaderTxt} /> }/>
+            <Route path="/" element={<EventViews setHeaderTxt={setHeaderTxt} />} />
+            <Route path="/:id" element={<EventDetails setHeaderTxt={setHeaderTxt} /> } />
+            <Route path="/event" element={<EventForm setHeaderTxt={setHeaderTxt} />} />
+            <Route path="/:id/update" element={<EventForm setHeaderTxt={setHeaderTxt} />} />
           </Routes>
     </>)
 }
