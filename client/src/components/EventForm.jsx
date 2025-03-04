@@ -29,7 +29,7 @@ export const EventForm = ({ setHeaderTxt }) => {
                 .catch(error => console.error("EventForm.jsx ERROR:", error))
         }
         else {
-            setHeaderTxt("New Event")
+            setHeaderTxt(" Schedule New Event")
             setFormData(DEFAULT_FORM_DATA)
         }
     }, [id, setHeaderTxt])
@@ -65,19 +65,6 @@ export const EventForm = ({ setHeaderTxt }) => {
             </div>
             <div className="mb-3" >
                 <label className="form-label">
-                    Event Name:
-                    <input
-                        className="form-control"
-                        type="text"
-                        name="eventName"
-                        value={formData.eventName}
-                        onChange={updateFormData}
-                    />
-                    {errors.eventName && <p className="error-text" >{errors.eventName.message}</p>}
-                </label>
-            </div>
-            <div className="mb-3" >
-                <label className="form-label">
                     Event Date:
                     <input
                         className="form-control"
@@ -87,6 +74,19 @@ export const EventForm = ({ setHeaderTxt }) => {
                         onChange={updateFormData}
                     />
                     {errors.eventDate && <p className="error-text" >{errors.eventDate.message}</p>}
+                </label>
+            </div>
+            <div className="mb-3" >
+                <label className="form-label">
+                    Event Name:
+                    <input
+                        className="form-control"
+                        type="text"
+                        name="eventName"
+                        value={formData.eventName}
+                        onChange={updateFormData}
+                    />
+                    {errors.eventName && <p className="error-text" >{errors.eventName.message}</p>}
                 </label>
             </div>
             <div className="mb-3" >
