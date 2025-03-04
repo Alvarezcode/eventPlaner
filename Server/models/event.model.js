@@ -20,7 +20,6 @@ const EventSchema = new Schema({
     eventTime : {
         type : String,
         required : [true, "There must be a time for your event"],
-        default : "12:00 pm",
     },
     numberOfPeople : {
         type : Number,
