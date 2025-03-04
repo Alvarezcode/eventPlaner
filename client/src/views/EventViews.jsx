@@ -7,9 +7,13 @@ export const EventViews = ({ setHeaderTxt }) => {
     const [eventList, setEventList] = useState([]);
 
     const formatDate = (dateString) => {
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const options = { year: 'numeric', month: 'long', day: 'numeric'};
         return new Date(dateString).toLocaleDateString('en-US', options)
     };
+    // const formatTime = (timeString)=>{
+    //     const options = { hour: "numeric", minute: "numeric", hour12: true};
+    //     return new Date(timeString).toLocaleTimeString('en-US', options)
+    // }
 
     const deleteEvent = (id) => {
         deleteEventById(id)
@@ -24,7 +28,7 @@ export const EventViews = ({ setHeaderTxt }) => {
             .then(RES => {
                 const formattedEvents = RES.map(event => ({
                     ...event,
-                    eventDate: formatDate(event.eventDate)
+                    eventDate: formatDate(event.eventDate),
                 }));
                 setEventList(formattedEvents);
                 setHeaderTxt("Events @Crusiers");

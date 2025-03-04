@@ -34,7 +34,6 @@ export const EventForm = ({ setHeaderTxt }) => {
         }
     }, [id, setHeaderTxt])
 
-
     const updateFormData = e => {
         setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
