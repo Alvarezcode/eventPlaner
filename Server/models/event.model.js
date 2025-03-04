@@ -15,10 +15,11 @@ const EventSchema = new Schema({
     },
     eventDate : {
         type : String,
-        required : [true, "Your event must have a date and time"],
+        required : [true, "Your event must have a date"],
     },
     eventTime : {
         type : String,
+        required : [true, "There must be a time for your event"],
         default : "12:00 pm",
     },
     numberOfPeople : {
