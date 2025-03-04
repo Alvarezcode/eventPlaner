@@ -5,7 +5,7 @@ export const DisplayEvents = ({ eventList, deleteEvent }) => {
 
     return (<>
         
-            <table className="table table-striped">
+            <table className="table table-striped table-hover table-bordered border-primary">
                 <thead>
                     <tr>
                         <th>Event Type</th>
@@ -16,7 +16,7 @@ export const DisplayEvents = ({ eventList, deleteEvent }) => {
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="table-group-divider">
                     {eventList.map(({ eventType, eventName, eventDate, eventTime, numberOfPeople, _id }) => (
                         <tr key={_id}>
                             <td>
