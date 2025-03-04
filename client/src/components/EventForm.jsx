@@ -29,7 +29,7 @@ export const EventForm = ({ setHeaderTxt }) => {
                 .catch(error => console.error("EventForm.jsx ERROR:", error))
         }
         else {
-            setHeaderTxt(" Schedule New Event")
+            setHeaderTxt("Schedule New Event")
             setFormData(DEFAULT_FORM_DATA)
         }
     }, [id, setHeaderTxt])
