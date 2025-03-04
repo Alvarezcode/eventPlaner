@@ -5,3 +5,11 @@
   text-align: center;
 }
 
+.form-label{
+  font-weight: bold;
+}
+
+.error-text{
+  color: red;
+  font-size: .8rem;
+}

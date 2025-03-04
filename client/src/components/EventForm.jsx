@@ -19,19 +19,10 @@ export const EventForm = ({setHeaderTxt})=>{
     const {id} = useParams()
     const navigate = useNavigate()
 
-    // const formatDate = (dateString)=>{
-    //     const options = {year: 'numeric', month: 'long', day: 'numeric'};
-    //     return new Date(dateString).toLocaleDateString('en-US', options)
-    // };
-
     useEffect(()=>{
         if(id){
             getEventById(id)
                 .then(RES =>{
-                    // setFormData({
-                    //     ...RES,
-                    //     eventDate: formatDate(RES.eventDate)
-                    // })
                     setFormData(RES)
                     setHeaderTxt(`Update Event: ${RES.eventName}`)
                 })
@@ -59,6 +50,7 @@ export const EventForm = ({setHeaderTxt})=>{
     }
     return(<>
             <form  onSubmit={handleSubmit} >
+                <div className="mb-3">
                 <label className="form-label">
                     Event Type:
                     <select className="form-select" name="eventType" value={formData.eventType} onChange={updateFormData} >
@@ -68,8 +60,10 @@ export const EventForm = ({setHeaderTxt})=>{
                         <option value={"Fund Raiser"}>Fund Raiser</option>
                         <option value={"Tournament"}>Tournament</option>
                     </select>
-                    {errors.eventType && <p>{errors.eventType.message}</p> }
+                    {errors.eventType && <p className="error-text" >{errors.eventType.message}</p> }
                 </label>
+                </div>
+                <div className="mb-3" >
                 <label className="form-label">
                     Event Name:
                     <input 
@@ -79,8 +73,10 @@ export const EventForm = ({setHeaderTxt})=>{
                         value={formData.eventName}
                         onChange={updateFormData} 
                     />
-                    {errors.eventName && <p>{errors.eventName.message}</p> }
+                    {errors.eventName && <p className="error-text" >{errors.eventName.message}</p> }
                 </label>
+                </div>
+                <div className="mb-3" >
                 <label className="form-label">
                     Event Date:
                     <input 
@@ -89,9 +85,11 @@ export const EventForm = ({setHeaderTxt})=>{
                         name="eventDate"
                         value={formData.eventDate}
                         onChange={updateFormData} 
-                    />
-                    {errors.eventDate && <p>{errors.eventDate.message}</p> }
+                        />
+                    {errors.eventDate && <p className="error-text" >{errors.eventDate.message}</p> }
                 </label>
+                </div>
+                <div className="mb-3" >
                 <label className="form-label">
                     Event Time:
                     <input 
@@ -100,9 +98,11 @@ export const EventForm = ({setHeaderTxt})=>{
                         name="eventTime"
                         value={formData.eventTime}
                         onChange={updateFormData} 
-                    />
-                    {errors.eventName && <p>{errors.eventName.message}</p> }
+                        />
+                    {errors.eventName && <p className="error-text" >{errors.eventName.message}</p> }
                 </label>
+                </div>
+                <div className="mb-3">
                 <label className="form-label">
                     Number of people:
                     <input 
@@ -111,9 +111,11 @@ export const EventForm = ({setHeaderTxt})=>{
                         name="numberOfPeople"
                         value={formData.numberOfPeople}
                         onChange={updateFormData} 
-                    />
-                    {errors.numberOfPeople && <p>{errors.numberOfPeople.message}</p> }
+                        />
+                    {errors.numberOfPeople && <p className="error-text" >{errors.numberOfPeople.message}</p> }
                 </label>
+                </div>
+                <div className="mb-3" >
                 <label className="form-label">
                     Image URL:
                     <input 
@@ -122,9 +124,11 @@ export const EventForm = ({setHeaderTxt})=>{
                         name="image"
                         value={formData.image}
                         onChange={updateFormData} 
-                    />
-                    {errors.image && <p>{errors.image.message}</p> }
+                        />
+                    {errors.image && <p className="error-text" >{errors.image.message}</p> }
                 </label>
+                </div>
+                <div className="mb-3" >
                 <label className="form-label">
                     Description:
                     <input 
@@ -133,9 +137,10 @@ export const EventForm = ({setHeaderTxt})=>{
                         name="description"
                         value={formData.description}
                         onChange={updateFormData} 
-                    />
-                    {errors.description && <p>{errors.description.message}</p> }
+                        />
+                    {errors.description && <p className="error-text" >{errors.description.message}</p> }
                 </label>
+                </div>
                 <input className="btn btn-success" type="submit" value={id ? "Update Event" : "Create Event"} />
             </form>
     
