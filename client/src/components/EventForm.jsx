@@ -49,7 +49,7 @@ export const EventForm = ({setHeaderTxt})=>{
             .catch(errors => setErrors(errors))
     }
     return(<>
-            <form  onSubmit={handleSubmit} >
+            <form className="form" onSubmit={handleSubmit} >
                 <div className="mb-3">
                 <label className="form-label">
                     Event Type:
