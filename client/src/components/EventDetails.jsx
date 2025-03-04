@@ -3,20 +3,20 @@ import { useParams } from "react-router-dom"
 import { getEventById } from "../services/EventService"
 import { Link } from "react-router-dom"
 
-export const EventDetails = ({setHeaderTxt})=>{
-    const {id} = useParams()
+export const EventDetails = ({ setHeaderTxt }) => {
+    const { id } = useParams()
     const [eventData, setEventData] = useState({})
 
-    useEffect(()=>{
+    useEffect(() => {
         getEventById(id)
             .then(RES => {
                 setEventData(RES)
                 setHeaderTxt(RES.eventName)
             })
             .catch(error => console.error(`EventDetails.jsx ERROR: ${error} `))
-    },[id, setHeaderTxt])
+    }, [id, setHeaderTxt])
 
-    return(<>
+    return (<>
         <h2> {eventData.eventType} </h2>
         <img src={eventData.image} alt={`${eventData.eventName}`} />
         <p>Your Invited to: {eventData.eventName}</p>

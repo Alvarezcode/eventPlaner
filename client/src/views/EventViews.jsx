@@ -3,26 +3,26 @@ import { deleteEventById, getAllEvents } from "../services/EventService"
 import { DisplayEvents } from "../components/DisplayEvents"
 
 
-export const EventViews = ({setHeaderTxt})=> {
+export const EventViews = ({ setHeaderTxt }) => {
     const [eventList, setEventList] = useState([]);
 
-    const formatDate = (dateString)=>{
-        const options = {year: 'numeric', month: 'long', day: 'numeric'};
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(dateString).toLocaleDateString('en-US', options)
     };
 
-    const deleteEvent = (id) =>{
+    const deleteEvent = (id) => {
         deleteEventById(id)
-        .then(()=>{
-            setEventList(prev => prev.filter(event => event._id !== id))
-        })
-        .catch(error =>console.error("DisplayEvents.jsx ERROR:", error))
+            .then(() => {
+                setEventList(prev => prev.filter(event => event._id !== id))
+            })
+            .catch(error => console.error("DisplayEvents.jsx ERROR:", error))
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getAllEvents()
-            .then(RES =>{
-                const formattedEvents = RES.map(event=>({
+            .then(RES => {
+                const formattedEvents = RES.map(event => ({
                     ...event,
                     eventDate: formatDate(event.eventDate)
                 }));
@@ -30,9 +30,9 @@ export const EventViews = ({setHeaderTxt})=> {
                 setHeaderTxt("Events @Crusiers");
             })
             .catch(error => console.error("EventView.jsx ERROR:", error))
-    },[setHeaderTxt])
+    }, [setHeaderTxt])
 
-    return(<>
-        <DisplayEvents eventList={eventList} deleteEvent={deleteEvent}  />
+    return (<>
+        <DisplayEvents eventList={eventList} deleteEvent={deleteEvent} />
     </>)
 }

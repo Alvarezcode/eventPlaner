@@ -10,14 +10,14 @@ function App() {
   const [headerTxt, setHeaderTxt] = useState("Events @Crusiers")
 
   return (<>
-          <Header headerTxt={headerTxt} />
-          <Routes>
-            <Route path="/" element={<EventViews setHeaderTxt={setHeaderTxt} />} />
-            <Route path="/:id" element={<EventDetails setHeaderTxt={setHeaderTxt} /> } />
-            <Route path="/event" element={<EventForm setHeaderTxt={setHeaderTxt} />} />
-            <Route path="/:id/update" element={<EventForm setHeaderTxt={setHeaderTxt} />} />
-          </Routes>
-    </>)
+    <Header headerTxt={headerTxt} />
+    <Routes>
+      <Route path="/" element={<EventViews setHeaderTxt={setHeaderTxt} />} />
+      <Route path="/:id" element={<EventDetails setHeaderTxt={setHeaderTxt} />} />
+      <Route path="/event" element={<EventForm setHeaderTxt={setHeaderTxt} />} />
+      <Route path="/:id/update" element={<EventForm setHeaderTxt={setHeaderTxt} />} />
+    </Routes>
+  </>)
 }
 
 export default App
