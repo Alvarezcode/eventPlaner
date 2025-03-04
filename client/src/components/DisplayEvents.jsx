@@ -1,24 +1,41 @@
 import { Link } from "react-router-dom"
 
 
-export const DisplayEvents = ({eventList, deleteEvent})=>{
+export const DisplayEvents = ({ eventList, deleteEvent }) => {
 
-    return(<>
-    {
-        eventList.map(({eventType, eventName, eventDate, eventTime, numberOfPeople, _id})=>(
-            <div key={_id}>
-                EventType:
-                <Link to={`/${_id}`} >
-                    {eventType}
-                </Link>
-                Event Name: {eventName}
-                Event Date: {eventDate}
-                Event Time: {eventTime}
-                How many People are Coming: {numberOfPeople}
-                <button className="btn btn-danger" onClick={()=> deleteEvent(_id)} >Cancel Event</button>
-            </div>
-        ))
-    }
+    return (<>
+        
+            <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Event Type</th>
+                        <th>Event Name</th>
+                        <th>Event Date</th>
+                        <th>Event Time</th>
+                        <th>Number of People</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {eventList.map(({ eventType, eventName, eventDate, eventTime, numberOfPeople, _id }) => (
+                        <tr key={_id}>
+                            <td>
+                                <Link to={`/${_id}`}>{eventType}</Link>
+                            </td>
+                            <td>{eventName}</td>
+                            <td>{eventDate}</td>
+                            <td>{eventTime}</td>
+                            <td>{numberOfPeople}</td>
+                            <td>
+                                <button className="btn btn-danger" onClick={() => deleteEvent(_id)}>
+                                    Cancel Event
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
     
+
     </>)
 }

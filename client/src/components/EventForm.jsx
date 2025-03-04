@@ -19,19 +19,20 @@ export const EventForm = ({setHeaderTxt})=>{
     const {id} = useParams()
     const navigate = useNavigate()
 
-    const formatDate = (dateString)=>{
-        const options = {year: 'numeric', month: 'long', day: 'numeric'};
-        return new Date(dateString).toLocaleDateString('en-US', options)
-    };
+    // const formatDate = (dateString)=>{
+    //     const options = {year: 'numeric', month: 'long', day: 'numeric'};
+    //     return new Date(dateString).toLocaleDateString('en-US', options)
+    // };
 
     useEffect(()=>{
         if(id){
             getEventById(id)
                 .then(RES =>{
-                    setFormData({
-                        ...RES,
-                        eventDate: formatDate(RES.eventDate)
-                    })
+                    // setFormData({
+                    //     ...RES,
+                    //     eventDate: formatDate(RES.eventDate)
+                    // })
+                    setFormData(RES)
                     setHeaderTxt(`Update Event: ${RES.eventName}`)
                 })
                 .catch(error => console.error("EventForm.jsx ERROR:", error))
@@ -44,8 +45,7 @@ export const EventForm = ({setHeaderTxt})=>{
 
 
     const updateFormData = e =>{
-        const {name, value} = e.target;
-        setFormData(prev => ({...prev, [name]: name === "eventDate" ? formatDate(value) : value }))
+        setFormData(prev => ({...prev, [e.target.name]: e.target.value }))
     }
 
     const handleSubmit = e =>{
@@ -58,10 +58,10 @@ export const EventForm = ({setHeaderTxt})=>{
             .catch(errors => setErrors(errors))
     }
     return(<>
-            <form onSubmit={handleSubmit} >
+            <form  onSubmit={handleSubmit} >
                 <label className="form-label">
                     Event Type:
-                    <select name="eventType" value={formData.eventType} onChange={updateFormData} >
+                    <select className="form-select" name="eventType" value={formData.eventType} onChange={updateFormData} >
                         <option value={"Benefit"}>Benefit</option>
                         <option value={"Birthday"}>Birthday</option>
                         <option value={"Watch Party"}>Watch Party</option>
@@ -85,7 +85,7 @@ export const EventForm = ({setHeaderTxt})=>{
                     Event Date:
                     <input 
                         className="form-control"
-                        type="Date"
+                        type="date"
                         name="eventDate"
                         value={formData.eventDate}
                         onChange={updateFormData} 

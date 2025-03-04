@@ -4,7 +4,12 @@ import { DisplayEvents } from "../components/DisplayEvents"
 
 
 export const EventViews = ({setHeaderTxt})=> {
-    const [eventList, setEventList] = useState([])
+    const [eventList, setEventList] = useState([]);
+
+    const formatDate = (dateString)=>{
+        const options = {year: 'numeric', month: 'long', day: 'numeric'};
+        return new Date(dateString).toLocaleDateString('en-US', options)
+    };
 
     const deleteEvent = (id) =>{
         deleteEventById(id)
@@ -17,8 +22,12 @@ export const EventViews = ({setHeaderTxt})=> {
     useEffect(()=>{
         getAllEvents()
             .then(RES =>{
-                setEventList(RES)
-                setHeaderTxt("Events @Crusiers")
+                const formattedEvents = RES.map(event=>({
+                    ...event,
+                    eventDate: formatDate(event.eventDate)
+                }));
+                setEventList(formattedEvents);
+                setHeaderTxt("Events @Crusiers");
             })
             .catch(error => console.error("EventView.jsx ERROR:", error))
     },[setHeaderTxt])
